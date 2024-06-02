@@ -19,6 +19,19 @@ Route::group(['middleware'=>['auth','isadmin']],function(){
    Route::get('/agenda/{id}/edit',[Admincontroller::class,'agendaedit'])->name('admin.agendas.edit');
    Route::put('/agenda/{id}/update',[Admincontroller::class,'agendaupdate'])->name('admin.agendas.update');
    Route::get('/agenda/{id}/delete',[Admincontroller::class,'agendadelete'])->name('admin.agendas.delete');
+
+
+
+
+
+   /**meetings */
+
+   Route::get('/meetings',[Admincontroller::class,'meetingindex'])->name('admin.meetings.index');
+
+
+
+
+
    
     Route::prefix('isadmin')->group(function () {
         Route::get('/profile', [ProfileController::class, 'edit'])->name('admin.profile.edit');
