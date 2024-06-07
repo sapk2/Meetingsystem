@@ -10,6 +10,8 @@ use Illuminate\Http\Request;
 
 class Admincontroller extends Controller
 {
+   /**************************************Agendas*********************************************************/
+   
    public function agendaindex() {
       $agenda=agendas::all();
       return view('admin.agendas.index',compact('agenda'));
@@ -25,25 +27,62 @@ class Admincontroller extends Controller
          'agenda_title'=>'required',
          'attachment'=>'required|mimes:pdf|max:2048'
       ]);
-      
+      $fileName= time().'.'.$request->attachment->extension();
+      $request->attachment->move(public_path('agendapdf'),$fileName);
+
+      agendas::create([
+         'meeting_id'=>$request->meeting_id,
+         'agenda_title'=>$request->agenda_title,
+         'attachment'=>$fileName,
+      ]);
+      return redirect(route('admin.agendas.index'));
+
 
    }
-   public function agendaedit($id){}
-   public function agendaupdate(Request $request){}
-   public function agendadelete($id){}
+   public function agendaedit($id){
+      $agenda=agendas::findorfail($id);
+      $meetings=meeting::all();
+      return view('admin.agendas.edit',compact('agenda','meetings'));
+
+   }
+   public function agendaupdate(Request $request, $id){
+      $agenda=agendas::findorfail($id);
+      $request->validate([
+         'meeting_id'=>'required',
+         'agenda_title'=>'required',
+         'attachment'=>'required|mimes:pdf|max:2048'
+      ]);
+      if ($request->has('attachment')) {
+         $fileName = time() . '.' . $request->attachment->extension();
+         $request->attachment->move(public_path('agendapdf'), $fileName);
+         $agenda->update(['attachment' => $fileName]);
+         
+      }
+      $agenda->update([
+         'meeting_id' => $request->meeting_id,
+         'agenda_title' => $request->agenda_title,
+      ]);
+      return redirect(route('admin.agendas.index'));
+
+   }
+   public function agendadelete($id){
+      $agenda=agendas::findorfail($id);
+      $agenda->delete();
+      return redirect(route('admin.agendas.index'));
+   }
 
 
 
 
 
-   /*******Meeting dashboard********* */
+   /******************************Meeting dashboard******************************************** */
    public function meetingindex(){
      $meeting= meeting::all();
       return view('admin.meetings.index',compact('meeting'));
    }
    public function meetingcreate(){
-      /*$user=user::all();*/
-      return view('admin.meetings.create');
+      $users=ModelsUser::all();
+      return view('admin.meetings.create',compact('users'));
    }
    public function meetingstore(Request $request){
       $data=$request->validate([
@@ -69,8 +108,8 @@ class Admincontroller extends Controller
       $data = $request->validate([
          'title' => 'required',
          'description' => 'required',
-         'date_time' => 'required|date',
-         'user_id' => 'required|exists:users,id',
+         'date_time' => 'required',
+         'user_id' => 'required',
          'location' => 'required'
      ]);
 

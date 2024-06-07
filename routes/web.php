@@ -17,7 +17,7 @@ Route::group(['middleware'=>['auth','isadmin']],function(){
    Route::get('/agendas/create',[Admincontroller::class,'agendacreate'])->name('admin.agendas.create');
    Route::post('/agenda/store',[Admincontroller::class,'agendastore'])->name('admin.agendas.store');
    Route::get('/agenda/{id}/edit',[Admincontroller::class,'agendaedit'])->name('admin.agendas.edit');
-   Route::put('/agenda/{id}/update',[Admincontroller::class,'agendaupdate'])->name('admin.agendas.update');
+   Route::post('/agenda/{id}/update',[Admincontroller::class,'agendaupdate'])->name('admin.agendas.update');
    Route::get('/agenda/{id}/delete',[Admincontroller::class,'agendadelete'])->name('admin.agendas.delete');
 
 
@@ -27,11 +27,11 @@ Route::group(['middleware'=>['auth','isadmin']],function(){
    /**meetings */
 
    Route::get('/meetings',[Admincontroller::class,'meetingindex'])->name('admin.meetings.index');
-
-
-
-
-
+Route::get('/meetings/create',[Admincontroller::class,'meetingcreate'])->name('admin.meetings.create');
+Route::post('/meeting/store',[Admincontroller::class,'meetingstore'])->name('admin.meetings.store');
+Route::get('/meetings/{id}/edit',[Admincontroller::class,'meetingedit'])->name('admin.meetngs.edit');
+Route::post('/meetings/{id}/update',[Admincontroller::class,'meetingupdate'])->name('admin.meetings.update');
+Route::get('/meetings/{id}/delete',[Admincontroller::class,'meetingdelete'])->name('admin.meetings.delete');
    
     Route::prefix('isadmin')->group(function () {
         Route::get('/profile', [ProfileController::class, 'edit'])->name('admin.profile.edit');

@@ -56,24 +56,21 @@
                <th scope="col" class="px-6 py-3">SN</th>
                   <th scope="col" class="px-6 py-3">Meeting Title</th>
                   <th scope="col" class="px-6 py-3">Agendas</th>
-                  <th scope="col" class="px-6 py-3">Attachment</th>
+                  <th scope="col" class="px-6 py-3">Agenda Docs</th>
                   <th scope="col" class="px-6 py-3">Action</th>
                </tr>
             </thead>
             <tbody>
                @foreach($agenda as $agendas)
                <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-                  <td>{{$loop->index + 1}}</td>
-                  <td>{{$agendas->meeting_id}}</td>
+                  <td class="p-4">{{ $loop->index + 1 }}</td>
+                  <td>{{$agendas->meeting->title}}</td>
                   <td>{{$agendas->agenda_title}}</td>
-                  <td>{{$agendas->attachment}}</td>
-                  <td class="border p-3">
-                     <a href="{{ route('admin.agendas.edit', $agenda->id) }}" class="bg-blue-500 text-white p-2 rounded-lg">Edit</a>
-                     <a href="{{ route('admin.agendas.destroy', $agenda->id) }}" class="bg-red-500 text-white p-2 rounded-lg" onclick="event.preventDefault(); document.getElementById('delete-form-{{ $agenda->id }}').submit();">Delete</a>
-                     <form id="delete-form-{{ $agenda->id }}" action="{{ route('agendas.destroy', $agenda->id) }}" method="POST" style="display: none;">
-                        @csrf
-                        
-                     </form>
+                  <td><a target="_blank" href="../agendapdf/{{$agendas->attachment}}">{{$agendas->attachment}}</a></td>
+                  <td class="p-3">
+                     <a href="{{route('admin.agendas.edit', $agendas->id )}}" ><i class="fa-solid fa-pen-to-square"></i></a>
+                     &nbsp;&nbsp;  &nbsp;&nbsp;   &nbsp;&nbsp;
+                    <a href="{{route('admin.agendas.delete',$agendas->id)}}" onclick="return confirm('Are you sure?')" ><i class="fa-sharp fa-solid fa-trash text-red-500 hover:text-red-700"></i></a>
                   </td>
                </tr>
                @endforeach

@@ -10,7 +10,8 @@
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.bunny.net">
         <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
-
+        <script src="https://kit.fontawesome.com/beb264445c.js" crossorigin="anonymous"></script>
+        
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
@@ -45,7 +46,7 @@
               @endif-->
             </button>
             </div>
-            <div class="z-50 hidden my-4 text-base list-none bg-white divide-y divide-gray-100 rounded shadow dark:bg-gray-700 dark:divide-gray-600" id="dropdownUserMenu">
+            <div class="z-50 absolute right-6 top-10 hidden my-4 text-base list-none bg-white divide-y divide-gray-100 rounded shadow dark:bg-gray-700 dark:divide-gray-600" id="dropdownUserMenu">
               <div class="px-4 py-3">
                 <p class="text-sm text-gray-900 dark:text-white">
                 {{Auth::user()->name}} 
