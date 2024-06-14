@@ -11,13 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('meetingnotices', function (Blueprint $table) {
-            $table->id();
-           $table->string('message');
-
-            $table->timestamps();
-        });
+        Schema::table('meetingnotices', function (Blueprint $table) {
+            //
+            $table->foreignId('meeting_id')->constrained()->onDelete('cascade');
         
+        });
     }
 
     /**
@@ -25,6 +23,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('meetingnotices');
+        Schema::table('meetingnotices', function (Blueprint $table) {
+            //
+        });
     }
 };

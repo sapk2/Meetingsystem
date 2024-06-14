@@ -3,9 +3,12 @@
 @section('content')
 <div class="p-4 sm:ml-64">
    <div class="p-4 border-2 border-gray-200 mt-14">
+   <h2 class="font-bold text-3xl text-amber-600">Agendas</h2>
+   <hr class="h-1 bg-amber-600">
       <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
          <div class="flex flex-column sm:flex-row flex-wrap space-y-4 sm:space-y-0 items-center justify-between pb-4">
          <div class="mt-10 text-left">
+        
         <a href="{{route('admin.agendas.create')}}" class="bg-amber-600 text-white p-3 rounded-lg">Add Agendas</a>
     </div>
             <div>
@@ -66,11 +69,11 @@
                   <td class="p-4">{{ $loop->index + 1 }}</td>
                   <td>{{$agendas->meeting->title}}</td>
                   <td>{{$agendas->agenda_title}}</td>
-                  <td><a target="_blank" href="../agendapdf/{{$agendas->attachment}}">{{$agendas->attachment}}</a></td>
+                  <td class="center-icon"><a target="_blank" href="../agendapdf/{{$agendas->attachment}}"><i class="fa-solid fa-file-pdf fa-2x"></i></a></td>
                   <td class="p-3">
-                     <a href="{{route('admin.agendas.edit', $agendas->id )}}" ><i class="fa-solid fa-pen-to-square"></i></a>
+                     <a href="{{route('admin.agendas.edit', $agendas->id )}}" ><i class="fa-solid fa-2x fa-pen-to-square text-blue-500 "></i></a>
                      &nbsp;&nbsp;  &nbsp;&nbsp;   &nbsp;&nbsp;
-                    <a href="{{route('admin.agendas.delete',$agendas->id)}}" onclick="return confirm('Are you sure?')" ><i class="fa-sharp fa-solid fa-trash text-red-500 hover:text-red-700"></i></a>
+                    <a href="{{route('admin.agendas.delete',$agendas->id)}}" onclick="return confirm('Are you sure?')" ><i class="fa-sharp fa-solid fa-trash fa-2x text-red-500 hover:text-red-700"></i></a>
                   </td>
                </tr>
                @endforeach

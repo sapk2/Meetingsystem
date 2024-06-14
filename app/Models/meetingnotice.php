@@ -9,6 +9,10 @@ class meetingnotice extends Model
 {
     use HasFactory;
     protected $fillable=[
-        'message'
+        'message',
+        'meeting_id'
     ];
+    public function meeting(){
+        return $this->belongsTo(meeting::class);
+    }
 }

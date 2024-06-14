@@ -3,12 +3,12 @@
 @section('content')
 <div class="p-4 sm:ml-64">
    <div class="p-4 border-2 border-gray-200 mt-14">
-   <h2 class="font-bold text-3xl text-amber-600">Meetings</h2>
+   <h2 class="font-bold text-3xl text-amber-600">Notices</h2>
    <hr class="h-1 bg-amber-600">
       <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
          <div class="flex flex-column sm:flex-row flex-wrap space-y-4 sm:space-y-0 items-center justify-between pb-4">
             <div class="mt-10 text-left">
-               <a href="{{route('admin.meetings.create')}}" class="bg-amber-600 text-white p-3 rounded-lg">create</a>
+               <a href="{{route('admin.notices.create')}}" class="bg-amber-600 text-white p-3 rounded-lg">create</a>
             </div>
             <div>
                <button id="dropdownRadioButton" data-dropdown-toggle="dropdownRadio" class="inline-flex items-center text-gray-500 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 font-medium rounded-lg text-sm px-3 py-1.5 dark:bg-gray-600 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700" type="button">
@@ -60,25 +60,20 @@
                   <th scope="col" class="px-6 py-3">SN</th>
                   <th scope="col" class="px-6 py-3">Meeting Title</th>
                   <th scope="col" class="px-6 py-3">description</th>
-                  <th scope="col" class="px-6 py-3">Date-Time</th>
-                  <th scope="col" class="px-6 py-3">Orgainzer</th>
-                  <th scope="col" class="px-6 py-3">Location</th>
                   <th scope="col" class="px-6 py-3">Action</th>
                </tr>
             </thead>
             <tbody>
-               @foreach($meeting as $meetings)
+               @foreach($notices as $notices)
                <tr class="bg-white-200 border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600">
                   <td class="p-3">{{$loop->index + 1}}</td>
-                  <td>{{$meetings->title}}</td>
-                  <td>{{$meetings->description}}</td>
-                  <td>{{$meetings->date_time}}</td>
-                  <td>{{$meetings->user->name}}</td>
-                  <td>{{$meetings->location}}</td>
+                  <td>{{$notices->meeting->title}}</td>
+                  <td>{{$notices->message}}</td>
+                 
                   <td class="p-3">
-                     <a href="{{route('admin.meetngs.edit', $meetings->id )}}" ><i class="fa-solid fa-pen-to-square text-green-500 hover:text-blue-500"></i></a>
+                     <a href="{{route('admin.notices.edit', $notices->id )}}" ><i class="fa-solid fa-pen-to-square text-green-500 hover:text-blue-500"></i></a>
                      &nbsp;&nbsp;  &nbsp;&nbsp;   &nbsp;&nbsp;
-                    <a href="{{route('admin.meetings.delete',$meetings->id)}}" onclick="return confirm('Are you sure?')" ><i class="fa-sharp fa-solid fa-trash text-red-500 hover:text-red-700"></i></a>
+                    <a href="{{route('admin.notices.delete',$notices->id)}}" onclick="return confirm('Are you sure?')" ><i class="fa-sharp fa-solid fa-trash text-red-500 hover:text-red-700"></i></a>
                   </td>
                </tr>
                @endforeach

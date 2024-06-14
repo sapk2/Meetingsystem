@@ -4,10 +4,10 @@
 <div class="p-4 sm:ml-64">
     <div class="p-4 border-2 border-gray-200  rounded-lg dark:border-gray-100 mt-14">
 
-       <h2 class="font-bold text-3xl text-amber-600">Agendas</h2>
+       <h2 class="font-bold text-3xl text-amber-600">Edit</h2>
        <hr class="h-1 bg-amber-600">
 
-        <form action="{{route('admin.agendas.store')}}" method="post" class="max-w-md mx-auto" enctype="multipart/form-data">
+        <form action="{{route('admin.agendas.update',$agenda->id )}}" method="post" class="max-w-md mx-auto" enctype="multipart/form-data">
             @csrf
             <div class="relative z-0 w-full mb-5 group">
                 <select name="meeting_id" id="meeting_id" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-dark dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" required>
@@ -20,16 +20,11 @@
             <div class="relative z-0 w-full mb-5 group ">
 
                 <label for="Agenda">Agendas</label>
-                <textarea id="default-editor" name="agenda_title"></textarea>
-                @error('agenda_title')
-                <div class="text-red-500 mt-2 text-sm">
-                    {{$message}}
-                </div>
-                @enderror
+                <textarea id="default-editor" name="agenda_title">{{$agenda->agenda_title}}</textarea>
             </div>
             <div class="relative z-0 w=full mb-5 group">
                 <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" for="file_input">Upload file</label>
-                <input type="file" name="attachment" id="file_input" class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400">
+                <input type="file" name="attachment" id="file_input" value="{{$agenda->attachment}}" class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400">
                 @error('attachment')
                 <div class="text-red-500 mt-2 text-sm">
                     {{$message}}

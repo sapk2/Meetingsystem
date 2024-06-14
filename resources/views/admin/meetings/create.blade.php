@@ -11,12 +11,27 @@
             @csrf
             <div class="relative z-0 w-full mb-5 group">
                 <input type="text" name="title" id="title" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-dark dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder="Title " required />
+                @error('title')
+                <div class="text-red-500 mt-2 text-sm">
+                    {{$message}}
+                </div>
+                @enderror
             </div>
             <div class="relative z-0 w-full mb-5 group">
                 <input type="text" name="description" id="description" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-dark dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder="description " required />
+                @error('description]')
+                <div class="text-red-500 mt-2 text-sm">
+                    {{$message}}
+                </div>
+                @enderror
             </div>
             <div class="relative z-0 w-full mb-5 group">
                 <input type="datetime-local" name="date_time" id="date_time" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-dark dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" required />
+                @error('date_time')
+                <div class="text-red-500 mt-2 text-sm">
+                    {{$message}}
+                </div>
+                @enderror
             </div>
             <div class="relative z-0 w-full mb-5 group">
                 <select name="user_id" id="user_id" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-dark dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" required>
@@ -25,9 +40,19 @@
                     <option value="{{ $user->id }}">{{ $user->name }}</option>
                     @endforeach
                 </select>
+                @error('id')
+                <div class="text-red-500 mt-2 text-sm">
+                    {{$message}}
+                </div>
+                @enderror
             </div>
             <div class="relative z-0 w-full mb-5 group">
                 <input type="text" name="location" id="location" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-dark dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder="location" required />
+                @error('location')
+                <div class="text-red-500 mt-2 text-sm">
+                    {{$message}}
+                </div>
+                @enderror
             </div>
             <div class="flex justify-center mt-6">
                 <input class="bg-blue-600 text-white px-4 py-2 rounded mx-2 hover:cursor-pointer" type="submit" value="submit">

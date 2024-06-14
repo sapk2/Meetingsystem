@@ -11,13 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('meetingnotices', function (Blueprint $table) {
-            $table->id();
-           $table->string('message');
+        Schema::table('users', function (Blueprint $table) {
 
-            $table->timestamps();
+            //
+            $table->string('avatar')->nullable();
         });
-        
+
     }
 
     /**
@@ -25,6 +24,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('meetingnotices');
+        Schema::table('users', function (Blueprint $table) {
+            $table->dropColumn('avatar');
+        });
     }
 };
