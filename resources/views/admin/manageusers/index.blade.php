@@ -3,7 +3,7 @@
 @section('content')
 <div class="p-4 sm:ml-64">
    <div class="p-4 border-2 border-gray-200 mt-14">
-   <h2 class="font-bold text-3xl text-amber-600">Meetings</h2>
+   <h2 class="font-bold text-3xl text-amber-600">Users</h2>
    <hr class="h-1 bg-amber-600">
       <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
          <div class="flex flex-column sm:flex-row flex-wrap space-y-4 sm:space-y-0 items-center justify-between pb-4">

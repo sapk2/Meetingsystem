@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admincontroller;
 use App\Http\Controllers\Dashboardcontroller;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\usersController;
 use Faker\Guesser\Name;
 use GuzzleHttp\Middleware;
 use Illuminate\Routing\Route as RoutingRoute;
@@ -43,9 +44,9 @@ Route::get('/meetings/{id}/delete',[Admincontroller::class,'meetingdelete'])->na
 Route::get('/manageusers',[Admincontroller::class,'manageuserindex'])->name('admin.manageusers.index');
 Route::get('manageusers/create',[Admincontroller::class,'manageusercreate'])->name('admin.manageusers.create');
 Route::post('/manageuser/store',[Admincontroller::class,'manageuserstore'])->name('admin.manageusers.store');
-Route::get('/manageusers/{user}/edit', [Admincontroller::class, 'manageuseredit'])->name('admin.manageusers.edit');
-Route::post('/manageusers/{user}/update', [Admincontroller::class, 'manageuserupdate'])->name('admin.manageusers.update');
-Route::get('/manageusers/{user}/delete', [Admincontroller::class, 'manageuserdelete'])->name('admin.manageusers.delete');
+Route::get('/manageusers/{id}/edit', [Admincontroller::class, 'manageuseredit'])->name('admin.manageusers.edit');
+Route::post('/manageusers/{id}/update', [Admincontroller::class, 'manageuserupdate'])->name('admin.manageusers.update');
+Route::get('/manageusers/{id}/delete', [Admincontroller::class, 'manageuserdelete'])->name('admin.manageusers.delete');
 
 Route::prefix('isadmin')->group(function () {
         Route::get('/profile', [Admincontroller::class, 'edit'])->name('admin.profile.edit');
@@ -54,9 +55,20 @@ Route::prefix('isadmin')->group(function () {
    });
 
     });
+
+
+    /********************user dashoard******************************************/
  
     Route::group(['middleware'=>['auth','user']],function(){
         Route::get('user/dashboard',[Dashboardcontroller::class,'userindex'])->name('user.dashboard');
+
+     
+        Route::get('user/meetings',[usersController::class,'meetingindex'])->name('user.meeting.index');
+        Route::get('user/agenda',[usersController::class,'agenda'])->name('agenda');
+        Route::get('user/notice',[usersController::class,'notice'])->name('notice');
+
+
+
         Route::prefix('user')->group(function () {
             Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
         Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');

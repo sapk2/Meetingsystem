@@ -17,7 +17,7 @@
     <body class="font-sans text-gray-900 antialiased">
         <div class="min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0 bg-gray-100">
             <div>
-                <img  src="{{asset('/img/logo.png')}}" alt="" width="112px" height="112px">
+                <img  src="{{asset('/img/logoo.png')}}" alt="" width="112px" height="112px">
                 <!-- <a href="/">
                     <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
                 </a> -->

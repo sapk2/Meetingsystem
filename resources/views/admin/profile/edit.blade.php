@@ -20,7 +20,7 @@
            <label for="description" class="form-label">Email *</label>
            <input class="form-control w-full" id="description" name="email" rows="10" required value="{{$user->email}}">
        </div>
-       <input type="file" name="image" class="block w-full my-4 p-2 rounded">
+       <input type="file" name="avatar" class="block w-full my-4 p-2 rounded">
        <div class="flex justify-center mt-6">
            <input class="bg-blue-600 text-white px-4 py-2 rounded mx-2 hover:cursor-pointer" type="submit" value="update">
            <a href="{{ route('admin.dashboard') }}" class="bg-red-500 text-white px-4 py-2 rounded mx-2">cancel</a>
