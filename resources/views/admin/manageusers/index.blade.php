@@ -74,7 +74,7 @@
                 <td class="p-3">
                      <a href="{{route('admin.manageusers.edit', $user->id )}}" ><i class="fa-solid fa-pen-to-square text-green-500 hover:text-blue-500"></i></a>
                      &nbsp;&nbsp;  &nbsp;&nbsp;   &nbsp;&nbsp;
-                    <a href="{{route('admin.manageusers.delete',$user->id)}}" onclick="return confirm('Are you sure?')" ><i class="fa-sharp fa-solid fa-trash text-red-500 hover:text-red-700"></i></a>
+                    <a href="{{route('admin.manageusers.delete',$user->id)}}" onclick="return confirm('Are you sure?')"  ><i class="fa-sharp fa-solid fa-trash text-red-500 hover:text-red-700"></i></a>
                   </td>
                </tr>
                @endforeach

@@ -41,7 +41,7 @@
                             <a href="{{route('user.dashboard')}}" class="py-5 px-3 text-gray-700 hover:text-gray-900">Dashboard</a>
                             <a href="{{route('user.meeting.index')}}" class="py-5 px-3 text-gray-700 hover:text-gray-900">Meetings</a>
                             <a href="{{route('user.agenda')}}" class="py-5 px-3 text-gray-700 hover:text-gray-900">Agendas</a>
-                            <a href="#" class="py-5 px-3 text-gray-700 hover:text-gray-900">profile</a>
+                            <a href="{{route('user.profile.show')}}" class="py-5 px-3 text-gray-700 hover:text-gray-900">profile</a>
                         </div>
                     </div>
                     <!-- Secondary Nav -->
@@ -63,21 +63,12 @@
                 </div>
             </div>
         </nav>
-        @if(request()->routeIs('user.dashboard'))
-       <!-- <marquee class="bg-yellow-300 py-2">
-            @foreach($notices as $item)
-            {{$item->message}}--|--
-            @endforeach
-        </marquee>-->
-        @endif
-
-    
         <!-- Mobile menu -->
         <div class="mobile-menu hidden md:hidden bg-blue-200">
             <a href="{{route('user.dashboard')}}" class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-200">Dashboard</a>
             <a href="{{route('user.meeting.index')}}" class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-200">Meetings</a>
             <a href="{{route('user.agenda')}}" class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-200">Agendas</a>
-            <a href="#" class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-200">profile</a>
+            <a href="{{route('user.profile.show')}}" class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-200">profile</a>
             <form action="{{route('logout')}}" method="POST" class="block">
                 @csrf
                 <button type="submit" class="block w-full text-left py-2 px-4 text-sm text-gray-700 hover:bg-gray-200">Logout</button>
